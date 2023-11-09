@@ -1,20 +1,23 @@
 @prefix ex: <http://example.org/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 ex:person1 rdf:type foaf:Person ;
-    foaf:name "Samantha" ;
-    rdfs:label "Person 1" ;
+    foaf:name "Alice" ;
+    foaf:age 30 ;
+    rdfs:label "Alice" ;
     ex:hasFriend ex:person2 .
 
 ex:person2 rdf:type foaf:Person ;
     foaf:name "Bob" ;
-    rdfs:label "Person 2" ;
+    foaf:age 35 ;
+    rdfs:label "Bob" ;   
     ex:hasFriend ex:person1 .
 
 ex:person3 rdf:type foaf:Person ;
     foaf:name "Charlie" ;
-    rdfs:label "Person 3" ;
+    rdfs:label "Charlie" ;
+    foaf:age 28 ;
     ex:hasFriend ex:person1, ex:person2 .
 
 ex:book1 rdf:type ex:Book ;
@@ -24,3 +27,6 @@ ex:book1 rdf:type ex:Book ;
 ex:book2 rdf:type ex:Book ;
     ex:title "Linked Data Principles" ;
     ex:author ex:person2 .
+
+ex:person1 ex:likes ex:book2 .
+ex:person2 ex:likes ex:book1 .
