@@ -3,7 +3,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 ex:person1 rdf:type foaf:Person ;
-    foaf:name "Alice" ;
+    foaf:name "Samantha" ;
     rdfs:label "Person 1" ;
     ex:hasFriend ex:person2 .
 
