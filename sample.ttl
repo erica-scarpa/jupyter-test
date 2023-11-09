@@ -5,15 +5,18 @@
 ex:person1 rdf:type foaf:Person ;
     foaf:name "Alice" ;
     foaf:age 30 ;
+    ex:title "Alice";
     ex:hasFriend ex:person2 .
 
 ex:person2 rdf:type foaf:Person ;
     foaf:name "Bob" ;
     foaf:age 35 ;
+    ex:title "Bob";    
     ex:hasFriend ex:person1 .
 
 ex:person3 rdf:type foaf:Person ;
     foaf:name "Charlie" ;
+    ex:title "Charlie";
     foaf:age 28 ;
     ex:hasFriend ex:person1, ex:person2 .
 
