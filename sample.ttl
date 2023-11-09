@@ -1,0 +1,29 @@
+@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+ex:person1 rdf:type foaf:Person ;
+    foaf:name "Alice" ;
+    foaf:age 30 ;
+    ex:hasFriend ex:person2 .
+
+ex:person2 rdf:type foaf:Person ;
+    foaf:name "Bob" ;
+    foaf:age 35 ;
+    ex:hasFriend ex:person1 .
+
+ex:person3 rdf:type foaf:Person ;
+    foaf:name "Charlie" ;
+    foaf:age 28 ;
+    ex:hasFriend ex:person1, ex:person2 .
+
+ex:book1 rdf:type ex:Book ;
+    ex:title "Introduction to RDF" ;
+    ex:author ex:person1 .
+
+ex:book2 rdf:type ex:Book ;
+    ex:title "Linked Data Principles" ;
+    ex:author ex:person2 .
+
+ex:person1 ex:likes ex:book2 .
+ex:person2 ex:likes ex:book1 .
