@@ -140,6 +140,7 @@ olia:UnitOfAnnotation rdf:type owl:NamedIndividual ,
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#AMA.MU
 mso:AMA.MU rdf:type owl:NamedIndividual ,
                     olia:UnitOfAnnotation ;
+           mso:hasGloss mso:u₃-mu-mu ;
            rdfs:label "AMA.MU" .
 
 
@@ -159,7 +160,6 @@ mso:TM.75.G.3433 rdf:type owl:NamedIndividual ,
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#VE-1044
 mso:VE-1044 rdf:type owl:NamedIndividual ,
                      mso:LexicalEntry ;
-            mso:hasGloss mso:u₃-mu-mu ;
             mso:hasLemma mso:AMA.MU ;
             rdfs:label "VE 1044" .
 
