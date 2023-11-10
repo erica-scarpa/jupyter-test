@@ -176,7 +176,7 @@ mso:VE-1044 rdf:type owl:NamedIndividual ,
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#u₃-mu-mu
 mso:u₃-mu-mu rdf:type owl:NamedIndividual ,
                       olia:LinguisticAnnotation ;
-             rdfs:label "pippero" .
+             rdfs:label "<i>u</i>₃-<i>mu-mu</i>" .
 
 
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.2004+TM.75.G.2001+TM.75.G.2003
