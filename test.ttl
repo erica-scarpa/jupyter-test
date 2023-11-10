@@ -59,12 +59,14 @@ cidoc-crm:P70i_is_documented_in rdf:type owl:ObjectProperty ;
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#hasGloss
 mso:hasGloss rdf:type owl:ObjectProperty ;
              rdfs:domain mso:LexicalEntry ;
+             rdfs:label "has Gloss" ;
              rdfs:range olia:LinguisticAnnotation .
 
 
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#hasLemma
 mso:hasLemma rdf:type owl:ObjectProperty ;
              rdfs:domain mso:LexicalEntry ;
+             rdfs:label "has Lemma" ;
              rdfs:range olia:UnitOfAnnotation .
 
 
