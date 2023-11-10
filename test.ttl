@@ -59,14 +59,12 @@ cidoc-crm:P70i_is_documented_in rdf:type owl:ObjectProperty ;
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#hasGloss
 mso:hasGloss rdf:type owl:ObjectProperty ;
              rdfs:domain mso:LexicalEntry ;
-             rdfs:label "has Gloss" ;
              rdfs:range olia:LinguisticAnnotation .
 
 
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#hasLemma
 mso:hasLemma rdf:type owl:ObjectProperty ;
              rdfs:domain mso:LexicalEntry ;
-             rdfs:label "has Lemma" ;
              rdfs:range olia:UnitOfAnnotation .
 
 
@@ -153,6 +151,13 @@ mso:Manuscript_A rdf:type owl:NamedIndividual ,
                  rdfs:label "Manuscript A" .
 
 
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#Manuscript_B
+mso:Manuscript_B rdf:type owl:NamedIndividual ,
+                          cidoc-crm:E31_Document ;
+                 cidoc-crm:P70i_is_documented_in <https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.2004+TM.75.G.2001+TM.75.G.2003> ;
+                 rdfs:label "Manuscript B" .
+
+
 ###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.3433
 mso:TM.75.G.3433 rdf:type owl:NamedIndividual ,
                           mso:Fragment ;
@@ -163,6 +168,8 @@ mso:TM.75.G.3433 rdf:type owl:NamedIndividual ,
 mso:VE-1044 rdf:type owl:NamedIndividual ,
                      mso:LexicalEntry ;
             mso:hasLemma mso:AMA.MU ;
+            mso:isEntryIn mso:TM.75.G.3433 ,
+                          <https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.2004+TM.75.G.2001+TM.75.G.2003> ;
             rdfs:label "VE 1044" .
 
 
@@ -170,6 +177,12 @@ mso:VE-1044 rdf:type owl:NamedIndividual ,
 mso:u₃-mu-mu rdf:type owl:NamedIndividual ,
                       olia:LinguisticAnnotation ;
              rdfs:label "u₃-mu-mu" .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.2004+TM.75.G.2001+TM.75.G.2003
+<https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.2004+TM.75.G.2001+TM.75.G.2003> rdf:type owl:NamedIndividual ,
+                                                                                                                mso:Fragment ;
+                                                                                                       rdfs:label "TM.75.G.2004+TM.75.G.2001+TM.75.G.2003" .
 
 
 #################################################################
