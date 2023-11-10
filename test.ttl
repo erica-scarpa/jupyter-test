@@ -1,64 +1,185 @@
-@prefix : <http://localhost:8080/vocabolario#> .
+@prefix : <https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mso: <https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix olia: <https://acoli-repo.github.io/olia/owl/system.owl> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://localhost:8080/vocabolario> .
+@prefix cidoc: <http://erlangen-crm.org/current/> .
+@prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/1.0/> .
+@base <https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl> .
 
-<http://localhost:8080/vocabolario> rdf:type owl:Ontology ;
-                                     owl:imports <http://purl.org/olia/sfb632.owl> ,
-                                                 <http://www.cidoc-crm.org/cidoc-crm/> ,
-                                                 <http://www.cidoc-crm.org/extensions/crmtex/> .
+<https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl> rdf:type owl:Ontology ;
+                                                                 dc:creator "Erica Scarpa (Italian National Research Council - ISPC)" ;
+                                                                 dc:rights "Creative Commons Attribution-NonCommercial 4.0 International License." ;
+                                                                 dc:title "A Manuscript Sequencing Ontology" ;
+                                                                 rdfs:comment "This is a comment" ;
+                                                                 rdfs:label "A Manuscript Sequencing Ontology" ;
+                                                                 owl:versionInfo 1.0 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/1.0/P46i_forms_part_of
+cidoc-crm:P46i_forms_part_of rdf:type owl:ObjectProperty ;
+                             rdfs:domain mso:Fragment ;
+                             rdfs:range mso:Tablet ;
+                             rdfs:comment "This property associates an instance of E18 Physical Thing with another instance of Physical Thing that forms part of it. The spatial extent of the composing part is included in the spatial extent of the whole." ;
+                             rdfs:label "P46i forms part of" .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/1.0/P70i_is_documented_in
+cidoc-crm:P70i_is_documented_in rdf:type owl:ObjectProperty ;
+                                rdfs:domain cidoc-crm:E31_Document ;
+                                rdfs:range mso:Fragment ,
+                                           mso:Tablet ;
+                                rdfs:comment "This class comprises all persistent physical objects created by human activity." ;
+                                rdfs:label "P70i is documented" .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#hasGloss
+mso:hasGloss rdf:type owl:ObjectProperty ;
+             rdfs:domain mso:LexicalEntry ;
+             rdfs:range olia:LinguisticAnnotation .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#hasLemma
+mso:hasLemma rdf:type owl:ObjectProperty ;
+             rdfs:domain mso:LexicalEntry ;
+             rdfs:range olia:UnitOfAnnotation .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#isEntryIn
+mso:isEntryIn rdf:type owl:ObjectProperty ;
+              rdfs:domain mso:LexicalEntry ;
+              rdfs:range mso:Fragment ,
+                         mso:Tablet .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/1.0/E22_Human-Made_Object
+cidoc-crm:E22_Human-Made_Object rdf:type owl:Class ;
+                                rdfs:comment "This class comprises all persistent physical objects created by human activity." ;
+                                rdfs:label "E22 Human-Made Object" .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/1.0/E31_Document
+cidoc-crm:E31_Document rdf:type owl:Class ;
+                       rdfs:comment "These propositions may be expressed in text, graphics, images, audiograms, videograms or by other similar means. Documentation databases are regarded as instances of E31 Document. This class should not be confused with the concept “document” in Information Technology, which is compatible with E73 Information Object." ;
+                       rdfs:label "E31 Document (Manuscript)" .
+
+
+###  https://acoli-repo.github.io/olia/owl/system.owlAnnotation
+olia:Annotation rdf:type owl:Class .
+
+
+###  https://acoli-repo.github.io/olia/owl/system.owlLinguisticAnnotation
+olia:LinguisticAnnotation rdf:type owl:Class .
+
+
+###  https://acoli-repo.github.io/olia/owl/system.owlUnitOfAnnotation
+olia:UnitOfAnnotation rdf:type owl:Class .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#Fragment
+mso:Fragment rdf:type owl:Class ;
+             rdfs:subClassOf cidoc-crm:E22_Human-Made_Object ;
+             rdfs:comment "This class comprises all persistent physical objects created by human activity." ;
+             rdfs:label "Fragment" .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#LexicalEntry
+mso:LexicalEntry rdf:type owl:Class ;
+                 rdfs:comment "This class comprises all persistent physical objects created by human activity." ;
+                 rdfs:label "Lexical Entry" .
+
+
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#Tablet
+mso:Tablet rdf:type owl:Class ;
+           rdfs:subClassOf cidoc-crm:E22_Human-Made_Object ;
+           rdfs:comment "This class comprises all persistent physical objects created by human activity." ;
+           rdfs:label "Tablet" .
+
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://localhost:8080/vocabolario#KA.MA
-:KA.MA rdf:type owl:NamedIndividual ,
-                <http://purl.org/olia/system.owl#UnitOfAnnotation> ;
-       <http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of> :VE-1044 ;
-       rdfs:label "KA.MA" .
+###  https://acoli-repo.github.io/olia/owl/system.owlLinguisticAnnotation
+olia:LinguisticAnnotation rdf:type owl:NamedIndividual ,
+                                   olia:Annotation .
 
 
-###  http://localhost:8080/vocabolario#Manuscript_A
-:Manuscript_A rdf:type owl:NamedIndividual ,
-                       <http://www.cidoc-crm.org/extensions/crmtex/TX1_Written_Text> ;
-              rdfs:label "Manuscript A" .
+###  https://acoli-repo.github.io/olia/owl/system.owlUnitOfAnnotation
+olia:UnitOfAnnotation rdf:type owl:NamedIndividual ,
+                               olia:Annotation .
 
 
-###  http://localhost:8080/vocabolario#TM.75.G.3528
-:TM.75.G.3528 rdf:type owl:NamedIndividual ,
-                       <http://www.cidoc-crm.org/cidoc-crm/E24_Physical_Human-Made_Thing> ;
-              <http://www.cidoc-crm.org/cidoc-crm/P56_bears_feature> :Manuscript_A .
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#AMA.MU
+mso:AMA.MU rdf:type owl:NamedIndividual ,
+                    olia:UnitOfAnnotation ;
+           rdfs:label "AMA.MU" .
 
 
-###  http://localhost:8080/vocabolario#VE-1044
-:VE-1044 rdf:type owl:NamedIndividual ,
-                  <http://www.cidoc-crm.org/extensions/crmtex/TX7_Written_Text_Segment> ;
-         rdfs:label "VE 1044" .
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#Manuscript_A
+mso:Manuscript_A rdf:type owl:NamedIndividual ,
+                          cidoc-crm:E31_Document ;
+                 cidoc-crm:P70i_is_documented_in mso:TM.75.G.3433 ;
+                 rdfs:label "Manuscript A" .
 
 
-###  http://localhost:8080/vocabolario#VE-530
-:VE-530 rdf:type owl:NamedIndividual ,
-                 <http://www.cidoc-crm.org/extensions/crmtex/TX7_Written_Text_Segment> ;
-        <http://www.cidoc-crm.org/extensions/crmtex/TXP4i_is_segment_of> :Manuscript_A ;
-        rdfs:label "VE 530" .
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#TM.75.G.3433
+mso:TM.75.G.3433 rdf:type owl:NamedIndividual ,
+                          mso:Fragment ;
+                 rdfs:label "TM.75.G.3433" .
 
 
-###  http://localhost:8080/vocabolario#VE-545
-:VE-545 rdf:type owl:NamedIndividual ,
-                 <http://www.cidoc-crm.org/extensions/crmtex/TX7_Written_Text_Segment> ;
-        <http://www.cidoc-crm.org/extensions/crmtex/TXP4i_is_segment_of> :Manuscript_A ;
-        rdfs:label "VE 545" .
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#VE-1044
+mso:VE-1044 rdf:type owl:NamedIndividual ,
+                     mso:LexicalEntry ;
+            mso:hasGloss mso:u₃-mu-mu ;
+            mso:hasLemma mso:AMA.MU ;
+            rdfs:label "VE 1044" .
 
 
-###  http://localhost:8080/vocabolario#bu3-gu2-um
-:bu3-gu2-um rdf:type owl:NamedIndividual ,
-                     <http://purl.org/olia/sfb632.owl#GLOSS> ;
-            <http://www.cidoc-crm.org/cidoc-crm/P9i_forms_part_of> :VE-1044 ;
-            rdfs:label "bu3-gu2-um" .
+###  https://github.com/erica-scarpa/MS/raw/master/ms-ontology.owl#u₃-mu-mu
+mso:u₃-mu-mu rdf:type owl:NamedIndividual ,
+                      olia:LinguisticAnnotation ;
+             rdfs:label "u₃-mu-mu" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+olia:LinguisticAnnotation rdfs:label "Linguistic Annotation (Gloss)" ;
+                          rdfs:comment "The Gloss. Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)." .
+
+
+olia:UnitOfAnnotation rdfs:label "Unit of Annotation (Lemma)" ;
+                      rdfs:comment "A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable. Word classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards." .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
